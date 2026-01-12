@@ -5,8 +5,9 @@ set -euo pipefail
 # DISCLAIMER
 # ==========================================================
 echo "=========================================================="
-echo "PDFGuard ist ein einfaches PDF-Rendering Tool fuer Tomcat."
-echo "Dieses Skript wird Tomcat und die PDFGuard-Anwendung installieren."
+echo "PDFGuard is a proprietary PDF rendering engine provided by OnPrem PDF API."
+echo "This script will install Apache Tomcat and the PDFGuard application on this system.
+echo "It is recommended to run this installer on a dedicated virtual machine or server."
 echo "=========================================================="
 echo ""
 

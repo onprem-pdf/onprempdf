@@ -16,6 +16,9 @@ echo ""
 # ==========================================================
 APP_NAME="pdfguard"
 WAR_URL="https://onprempdf.com/war/pdfguard.war"
+WAR_SHA256="08736a33cfa114245d72c3a376920cdfdd8acfa8ce2d262baf9b961924b7712e"
+
+
 TOMCAT_USER="tomcat"
 TOMCAT_GROUP="tomcat"
 TOMCAT_DIR="/opt/tomcat"
@@ -156,6 +159,9 @@ chmod 600 "${TOMCAT_CONF}/tomcat-users.xml"
 # ==========================================================
 log "Download WAR"
 curl -fL "$WAR_URL" -o "$WAR_LOCAL"
+
+log "Verify WAR integrity (SHA-256)"
+echo "${WAR_SHA256}  ${WAR_LOCAL}" | sha256sum -c -
 
 systemctl stop pdfguard || true
 rm -rf "${TOMCAT_WEBAPPS:?}/${APP_NAME}"*

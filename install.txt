@@ -69,7 +69,6 @@ cd /tmp
 TARBALL="apache-tomcat-${TOMCAT_VER}.tar.gz"
 URL="https://dlcdn.apache.org/tomcat/tomcat-9/v${TOMCAT_VER}/bin/${TARBALL}"
 
-systemctl stop tomcat9 2>/dev/null || true
 
 curl -fL "$URL" -o "$TARBALL"
 
@@ -103,7 +102,7 @@ chmod 750 "$PDFGUARD_DATA"
 # systemd service
 # ==========================================================
 log "Create systemd service for Tomcat"
-cat > /etc/systemd/system/tomcat9.service <<EOF
+cat > /etc/systemd/system/pdfguard.service <<EOF
 [Unit]
 Description=Apache Tomcat 9 (PDFGuard)
 After=network.target
@@ -158,7 +157,7 @@ chmod 600 "${TOMCAT_CONF}/tomcat-users.xml"
 log "Download WAR"
 curl -fL "$WAR_URL" -o "$WAR_LOCAL"
 
-systemctl stop tomcat9 || true
+systemctl stop pdfguard || true
 rm -rf "${TOMCAT_WEBAPPS:?}/${APP_NAME}"*
 cp "$WAR_LOCAL" "${TOMCAT_WEBAPPS}/${APP_NAME}.war"
 chown "${TOMCAT_USER}:${TOMCAT_GROUP}" "${TOMCAT_WEBAPPS}/${APP_NAME}.war"
@@ -167,8 +166,8 @@ chown "${TOMCAT_USER}:${TOMCAT_GROUP}" "${TOMCAT_WEBAPPS}/${APP_NAME}.war"
 # Enable & start Tomcat
 # ==========================================================
 log "Enable services"
-systemctl enable tomcat9
-systemctl start tomcat9
+systemctl enable pdfguard
+systemctl start pdfguard
 
 # ==========================================================
 # Done

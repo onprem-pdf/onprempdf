@@ -1,0 +1,30 @@
+OnPrem PDF API includes third-party software components.
+
+These components are licensed separately under their own licenses.
+
+---
+
+Apache Tomcat
+
+Copyright © The Apache Software Foundation
+
+Licensed under the Apache License, Version 2.0
+http://www.apache.org/licenses/LICENSE-2.0
+
+Apache Tomcat is used as the embedded HTTP server.
+
+---
+
+Adoptium (formerly AdoptOpenJDK)
+
+Copyright © Eclipse Adoptium Contributors
+
+Licensed under the Eclipse Public License 2.0
+https://www.eclipse.org/legal/epl-2.0/
+
+Adoptium is used to provide the Java Runtime Environment.
+
+---
+
+These components are not part of the OnPrem PDF API product itself and are
+distributed under their respective licenses.

@@ -39,15 +39,6 @@ require_root() {
 require_root
 
 
-if systemctl list-unit-files | grep -q '^tomcat9\.service'; then
-    echo "[gpioflow] ∏è Tomcat9 Service exists. Cancel installation."
-    exit 1
-fi
-
-if [ -d "/opt/tomcat" ]; then
-    echo "[gpioflow] ∏è Tomcat-dir /opt/tomcat exists. Cancel installation."
-    exit 1
-fi
 
 
 log "Prepare temp dir"

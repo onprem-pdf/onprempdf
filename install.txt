@@ -103,13 +103,17 @@ chmod +x "${TOMCAT_DIR}/bin/"*.sh
 # ==========================================================
 # 
 # ==========================================================
-log "Create PDFGuard data directory"
 
 PDFGUARD_DATA="/var/lib/pdfguard"
+PDFGUARD_AUDITS="/var/lib/pdfguard/audits"
 
-mkdir -p "$PDFGUARD_DATA"
-chown "${TOMCAT_USER}:${TOMCAT_GROUP}" "$PDFGUARD_DATA"
+log "Create PDFGuard data directories"
+
+mkdir -p "$PDFGUARD_AUDITS"
+
+chown -R "${TOMCAT_USER}:${TOMCAT_GROUP}" "$PDFGUARD_DATA"
 chmod 750 "$PDFGUARD_DATA"
+chmod 750 "$PDFGUARD_AUDITS"
 
 # Lite mode = no license file present
 

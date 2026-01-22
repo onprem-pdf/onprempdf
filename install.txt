@@ -101,6 +101,32 @@ tar -xzf "$TARBALL" -C "$TOMCAT_DIR" --strip-components=1
 chown -R "${TOMCAT_USER}:${TOMCAT_GROUP}" "$TOMCAT_DIR"
 chmod +x "${TOMCAT_DIR}/bin/"*.sh
 
+
+# ==========================================================
+# Configure Tomcat connector limits
+# ==========================================================
+
+log "Backup original server.xml"
+cp "${TOMCAT_CONF}/server.xml" "${TOMCAT_CONF}/server.xml.bak"
+
+log "Configure Tomcat connector limits"
+
+perl -0777 -i -pe 's|<Connector\s+port="8080"[\s\S]*?/>|<Connector
+    port="8080"
+    protocol="org.apache.coyote.http11.Http11NioProtocol"
+    maxThreads="8"
+    acceptCount="16"
+    maxPostSize="200000"
+    connectionTimeout="20000"
+/>|g' "${TOMCAT_CONF}/server.xml"
+
+# Ensure correct ownership and permissions
+chown ${TOMCAT_USER}:${TOMCAT_GROUP} "${TOMCAT_CONF}/server.xml"
+chmod 600 "${TOMCAT_CONF}/server.xml"
+
+
+
+
 # ==========================================================
 # 
 # ==========================================================

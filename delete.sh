@@ -21,7 +21,7 @@ rm -rf /opt/tomcat
 echo "[cleanup] Delete PDFGuard Data"
 rm -rf /var/lib/pdfguard
 
-echo "[cleanup] Entferne Temp Dateien"
+echo "[cleanup] Delete Temp Dateien"
 rm -rf /tmp/pdfguard-install
 rm -f /tmp/apache-tomcat-*.tar.gz
 

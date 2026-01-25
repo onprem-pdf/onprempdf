@@ -101,10 +101,12 @@ tar -xzf "$TARBALL" -C "$TOMCAT_DIR" --strip-components=1
 chown -R "${TOMCAT_USER}:${TOMCAT_GROUP}" "$TOMCAT_DIR"
 chmod +x "${TOMCAT_DIR}/bin/"*.sh
 
-# Remove default Tomcat management webapps and example folder (reduce attack surface)
+# Remove default Tomcat management webapps, ROOT and example folder (reduce attack surface)
 rm -rf "${TOMCAT_WEBAPPS}/manager" \
        "${TOMCAT_WEBAPPS}/host-manager" \
-       "${TOMCAT_WEBAPPS}/examples"
+       "${TOMCAT_WEBAPPS}/examples" \
+       "${TOMCAT_WEBAPPS}/ROOT"
+
 
 # ==========================================================
 # Configure Tomcat connector limits

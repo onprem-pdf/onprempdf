@@ -13,6 +13,16 @@ to investigate and address them.
 We aim to acknowledge security reports within 2 business days and provide
 an initial assessment within 5 business days.
 
+
+## Dependency Security
+
+OnPremPDF uses a small, well-defined set of third-party libraries.
+JSON input is deserialized into fixed internal data models without
+polymorphic or dynamic type handling.
+
+Dependencies are reviewed periodically and updated in response to
+relevant security advisories.
+
 ## Scope
 This security policy applies to:
 - The OnPremPDF application
